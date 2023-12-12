@@ -28,8 +28,8 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
- padding-top: 20px;
- padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 00, 0, 0.1), 10px 10px 5px rgba(34, 34, 34, 0.2), 20px 10px 10px rgba(34, 34, 34, 0.2), 5px 5px 5px rgba(54, 54, 54, 0.1),
     inset 3px 1px 3px #422601, inset -3px 1px 3px #15100a;
@@ -69,12 +69,12 @@ h1 {
 }
 
 .grid-cell.filled {
-  background-color: rgb(204, 20, 228);
+  background-color: rgb(169, 99, 235);
   color: black;
 }
 
 .grid-cell.selected {
-  background-color: blue;
+  background-color: rgb(9, 78, 61);
   color: white;
 }
 
@@ -87,7 +87,7 @@ h1 {
     width: 95%;
     height: 50%;
   }
- }
+}
 
 @media (max-width: 425px) {
   .main-container {
