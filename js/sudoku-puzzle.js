@@ -1,13 +1,13 @@
 const board = document.querySelector('.sudoku-board');
-const dridSell = document.querySelector('.grid-cell');
 const mode = document.querySelector('.dark-light-mode');
 const inputName = document.querySelector('#input-name');
 const play = document.querySelector('#play');
 const startScreen = document.querySelector('#start-screen');
 const gameScreen = document.querySelector('#game-screen');
-const sudokuBoard = document.querySelector('.sudoku-board');
 const container = document.querySelector('.container');
-
+const numbers = document.querySelectorAll('.number');
+const screen = document.querySelector('.screen');
+const cell = document.querySelector('.grid-cell');
 
 let grid = [
     [0, 0, 7, 4, 9, 1, 6, 0, 5],
@@ -19,11 +19,10 @@ let grid = [
     [9, 0, 4, 0, 7, 0, 0, 0, 2],
     [6, 7, 0, 8, 3, 0, 0, 0, 0],
     [8, 1, 0, 0, 4, 5, 0, 0, 0]
-]
+];
 let size = 9;
 
 function displaySudoku(grid) {
-    //check duplicate number 
     board.innerHTML = '';
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[row].length; col++) {
@@ -36,28 +35,57 @@ function displaySudoku(grid) {
             } else {
                 cell.textContent = '';
             }
-            board.appendChild(cell);
-        }
-    }
-    const cells = document.querySelectorAll('.grid-cell');
-    cells.forEach(cell => {
-        cell.addEventListener('click', () => {
-            console.log('aaaaaaaaaaaaaaaaaaaaaaa');
+            if (row === 2 || row === 5) {
+                cell.style.marginBottom ='10px';
+                        }
+                        if (col === 2 || col === 5) {
+                            cell.style.marginRight ='10px';
+                        }                    
+                        board.appendChild(cell);
+                    }
+                }
+           const cells = document.querySelectorAll('.grid-cell');
+            cells.forEach(cell => {
+            cell.addEventListener('click', () => {
             cell.classList.toggle('selected');
         });
     })
-}
 
+}
 displaySudoku(grid);
+
+let selectedNumber = null;
+const getNumber = () => {
+    numbers.forEach(number => {
+        number.addEventListener('click', () => {
+            screen.style.display='none';
+            number.style.backgroundColor = 'green';
+            selectedNumber = number.textContent; 
+           
+        });
+    });
+}
+getNumber();
+
+// Add event listeners to the grid cells
+const cells = document.querySelectorAll('.grid-cell');
+cells.forEach(cell => {
+    cell.addEventListener('click', () => {
+        if (selectedNumber) {
+            cell.textContent = selectedNumber; // Set the selected number
+            cell.classList.add('filled');
+            selectedNumber = null; // Reset the selected number
+        }
+    });
+});
 const isCorrectNum = (row, col, num) => {
 
     //check duplicate number in col 
     for (let i = 0; i < size; i++) {
-        if (grid[i][col] === num) {
+        if (grid[i][col] === num) { 
             console.log('false');
             return false;
         }
-        return true;
     }
     //check duplicate number in row
     for (let i = 0; i < size; i++) {
@@ -79,7 +107,7 @@ const isCorrectNum = (row, col, num) => {
     }
     console.log('true');
     return true;
-}
+};
 
 function solve(col,row) {
     if(col === size && row ===size-1){
@@ -114,8 +142,9 @@ function changeMode() {
 
 const startGame = () => {
     startScreen.classList.remove('active');
+   
     container.classList.add('active');
-}
+    }
 function newGame() {
     console.log('jkf');
     if (inputName.value.trim().length > 0) {
@@ -134,52 +163,3 @@ play.addEventListener('click', newGame);
 mode.addEventListener('click', changeMode);
 
 
-
-
-
-
-
-
-
-
-
-
-    // function isEmpty(rpw, col) {
-    //     !grid[row][col] ? true : false
-    // }
-    
-    // function solve() {
-    //     for (i = 0; i < size; i++) {
-    //         for (j = 0; j < size; j++) {
-    //             let isEmpty = isEmpty()
-    //             if (isEmpty) {
-    //                 for (num = 1; num = size; num++) {
-                       
-                        
-    
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-    
-    
-    
-    
-    // function initGameGrid() {
-    //     let size = 9;
-    //     const cells = document.querySelectorAll('.grid-cell');
-    //     let index = 0;
-    //     for (let i = 0; i < Math.pow(size, 2); i++) {
-    //         let row = Math.floor(i / size);
-    //         let col = i % size;
-    //         if (row === 3 || row === 6) {
-    //             cells[index].style.marginBottom ='10px';
-    //         }
-    //         if (col === 3 || col === 6) {
-    //             cells[index].style.marginRight ='10px';
-    //         }
-    //         index++;
-    //     }
-    // }
-    // initGameGrid();

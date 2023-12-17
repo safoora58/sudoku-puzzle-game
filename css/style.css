@@ -30,6 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+ 
 }
 
 .screen {
@@ -37,13 +38,20 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 100vh;
+  height: 30vh;
   width: 30%;
   display: grid;
   place-items: center;
   min-width: 200px;
   overflow: hidden;
+  z-index: 1;
 }
+
+.screen.index{
+  z-index: 1;
+}
+
+
 
 .start-screen {
   display: flex;
@@ -54,6 +62,9 @@ body {
   transition: transform 0.4s ease-in-out;
 }
 
+.start-screen.index{
+  z-index: 1;
+}
 .start-screen.active {
   transform: translateX(0);
 }
@@ -118,10 +129,8 @@ body {
   padding-bottom: 20px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 00, 0, 0.1), 10px 10px 5px rgba(34, 34, 34, 0.2), 20px 10px 10px rgba(34, 34, 34, 0.2), 5px 5px 5px rgba(54, 54, 54, 0.1),
-    inset 3px 1px 3px #422601, inset -3px 1px 3px #15100a;
-  z-index: -1;
+    inset 3px 1px 3px #422601, inset -3px 1px 3px #15100a; 
 }
-
 .container {
   height: 95%;
   width: 95%;
@@ -133,11 +142,14 @@ body {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 5px 5px 5px rgba(0, 00, 0, 0.1), 10px 10px 5px rgba(34, 34, 34, 0.2), 20px 10px 10px rgba(34, 34, 34, 0.2), 5px 5px 5px rgba(54, 54, 54, 0.1),
-    inset 3px 1px 3px #bd6d04, inset -3px 1px 3px #bd6d04;
+  inset 3px 1px 3px #bd6d04, inset -3px 1px 3px #bd6d04;
   transform: translateX(300%);
   transition: transform 0.5s ease-in-out;
 }
 
+.container.index{
+  z-index: 1;
+}
 .container.active {
   transform: translateX(0);
 }
@@ -212,6 +224,18 @@ body {
   background-color: rgb(238, 9, 63);
 }
 
+.zoom-in{
+  animation: zoom-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 @media (max-width: 465px) {
   .main-container {
     width: 95%;
