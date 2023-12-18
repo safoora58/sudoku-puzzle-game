@@ -6,8 +6,12 @@ const startScreen = document.querySelector('#start-screen');
 const gameScreen = document.querySelector('#game-screen');
 const container = document.querySelector('.container');
 const numbers = document.querySelectorAll('.number');
+const numbersContainer = document.getElementById('numbersContainer');
 const screen = document.querySelector('.screen');
 const cell = document.querySelector('.grid-cell');
+const btnDelete = document.querySelector('#btn-delete');
+const btnSolve = document.querySelector('#btn-solve');
+const newBoard = document.querySelector('#new-board');
 
 let grid = [
     [0, 0, 7, 4, 9, 1, 6, 0, 5],
@@ -26,7 +30,6 @@ function displaySudoku(grid) {
     board.innerHTML = '';
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[row].length; col++) {
-
             const cell = document.createElement('div');
             cell.textContent = grid[row][col];
             cell.classList.add('grid-cell');
@@ -35,121 +38,100 @@ function displaySudoku(grid) {
             } else {
                 cell.textContent = '';
             }
-            if (row === 2 || row === 5) {
-                cell.style.marginBottom ='10px';
-                        }
-                        if (col === 2 || col === 5) {
-                            cell.style.marginRight ='10px';
-                        }                    
-                        board.appendChild(cell);
-                    }
-                }
-           const cells = document.querySelectorAll('.grid-cell');
-            cells.forEach(cell => {
-            cell.addEventListener('click', () => {
-            cell.classList.toggle('selected');
-        });
-    })
-
+            board.appendChild(cell);
+        }
+    }
 }
 displaySudoku(grid);
 
-let selectedNumber = null;
-const getNumber = () => {
-    numbers.forEach(number => {
-        number.addEventListener('click', () => {
-            screen.style.display='none';
-            number.style.backgroundColor = 'green';
-            selectedNumber = number.textContent; 
-           
+const insertNumber = () => {
+    numbersContainer.addEventListener('click', e => {
+        screen.style.display = 'none';
+        changeNum = e.target.textContent;
+        e.target.style.backgroundColor = 'green';
+        setTimeout(() => {
+            e.target.style.backgroundColor = '#f19249';
+        }, 1000);
+
+        console.log(changeNum);
+
+        board.addEventListener('click', e => {
+            e.target.textContent = changeNum;
+            e.target.classList.add('filled');
+            e.target.classList.add('zoom-in');
+            setTimeout(() => {
+                e.target.classList.remove('zoom-in');
+            }, 500);
         });
     });
 }
-getNumber();
+insertNumber();
 
-// Add event listeners to the grid cells
-const cells = document.querySelectorAll('.grid-cell');
-cells.forEach(cell => {
-    cell.addEventListener('click', () => {
-        if (selectedNumber) {
-            cell.textContent = selectedNumber; // Set the selected number
-            cell.classList.add('filled');
-            selectedNumber = null; // Reset the selected number
-        }
+const deleteNum = () => {
+    btnDelete.addEventListener('click', () => {
+        screen.style.display = 'none';
+
+        board.addEventListener('click', e => {
+            e.target.textContent = '';
+            e.target.classList.remove('filled');
+        });
     });
-});
-const isCorrectNum = (row, col, num) => {
+}
+deleteNum();
 
-    //check duplicate number in col 
+function isCorrectNum  (row, col, num) {
     for (let i = 0; i < size; i++) {
-        if (grid[i][col] === num) { 
-            console.log('false');
+        if (grid[i][col] == num) {
             return false;
         }
     }
-    //check duplicate number in row
-    for (let i = 0; i < size; i++) {
-        if (grid[row][i] === num) {
-            console.log('false');
+    for (let j = 0; j < size; j++) {
+        if (grid[row][j] == num) {
             return false;
         }
     }
-    //check duplicate number in box 3*3
-    let colStart = col - col % 3;
-    let rowStart = row - row % 3;
-    for (let i = rowStart; i < rowStart + 3; i++) {
-        for (let j = colStart; j < colStart + 3; j++) {
-            if (grid[i][j] === num) {
-                console.log('false');
-                return false;
-            }
-        }
-    }
-    console.log('true');
     return true;
 };
 
-function solve(col,row) {
-    if(col === size && row ===size-1){
-        displaySudoku(grid);
-        return ;
-    }
-    if(col === size){
-        row++;
-        col=0;
-    }
-    if(grid[col][row] !==0){
-        solve({col: col+1 , row});
-        return;
-    }
-    if (grid[row][col] === 0) {
-        for (let num = 1; num <= size; num++) {
-            if (isCorrectNum(row, col, num)) {
-                grid[row][col] = num;
-               if( solve({col: col+1 , row})){
-               }
-                grid[row][col] = 0;
-            }
-        }
-        return;
-    }
-    displaySudoku(grid);
+function isEmpty(row, col) {
+    return grid[row][col] == 0 ? true : false
 }
 
-function changeMode() {
-    document.body.classList.add('dark');
+function solve() {
+    for (let row = 0; row < size; row++) {
+        for (let col = 0; col < size; col++) {
+            let isEmpty2 = isEmpty(row, col);
+            if (isEmpty2) {
+                for (let num = 1; num <= size; num++) {
+                    if (isCorrectNum(row, col, num)) {
+                        grid[row][col] = num;
+
+                        if (solve()) {                     
+                            grid[row][col].textContent = grid[row][col];       
+                            displaySudoku(grid);
+                            return true
+                        }
+                        else {
+                            grid[row][col] = 0
+                        }
+                    }                                       
+                }
+                return false
+            }
+        }
+    }
+    return true
 }
+
 
 const startGame = () => {
     startScreen.classList.remove('active');
-   
     container.classList.add('active');
-    }
+};
+
 function newGame() {
-    console.log('jkf');
     if (inputName.value.trim().length > 0) {
         startGame();
-        alert('start a new game');
     } else {
         inputName.classList.add('error-inputname');
         setTimeout(() => {
@@ -159,7 +141,14 @@ function newGame() {
     }
 }
 
+function changeMode() {
+    document.body.classList.add('dark');
+}
+
 play.addEventListener('click', newGame);
 mode.addEventListener('click', changeMode);
-
+btnSolve.addEventListener('click', solve);
+//newBoard.addEventListener('click', () => {
+   // newGame();
+//});
 
