@@ -121,7 +121,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   height: 700px;
-  width: 600px;
+  width: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,7 +137,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+ 
   background-color: rgb(246, 231, 116);
   border-radius: 10px;
   padding: 10px;
@@ -201,9 +201,21 @@ body {
   color: #e8e8e8;
 }
 
+.footer{
+   width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 00, 0, 0.1), 10px 10px 5px rgba(34, 34, 34, 0.2), 20px 10px 10px rgba(34, 34, 34, 0.2), 5px 5px 5px rgba(54, 54, 54, 0.1),
+  inset 3px 1px 3px #422601, inset -3px 1px 3px #15100a;
+}
+
 .numbers {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 5px;
   margin-top: 10px;
 }
@@ -222,7 +234,16 @@ body {
   display: grid;
   place-items: center;
 }
-
+#btn-delete,
+#btn-solve,
+#new-board,
+#reset{
+  height: 50px;
+  width: 120px;
+  background-color: #81f149;
+  margin-bottom: 10px;
+ 
+}
 .delete {
   background-color: rgb(238, 9, 63);
 }

@@ -142,6 +142,7 @@ const deleteNum = () => {
         board.addEventListener('click', e => {
             e.target.textContent = '';
             e.target.classList.remove('filled');
+            e.target.style.backgroundColor = 'rgb(161, 212, 168)';
         });
     });
 }
@@ -187,16 +188,16 @@ function generateNewGame() {
             randomCol = Math.floor(Math.random() * size);
             randomNum = numbers[Math.floor(Math.random() * numbers.length)];
         }
-
-        // Place the random number in the grid
         newGrid[randomRow][randomCol] = randomNum;
     }
-
-    // Update the grid and display the new game
     grid = newGrid;
     displaySudoku(grid);
     console.log(newGrid);
 }
+
+
+
+
 
 function resetGame() {
     for (let i = 0; i < size; i++) {
@@ -206,8 +207,6 @@ function resetGame() {
     }
     displaySudoku(grid);
 }
-
-
 
 newBoard.addEventListener('click', generateNewGame);
 play.addEventListener('click', newGame);
