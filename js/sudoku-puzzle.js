@@ -70,7 +70,6 @@ function isCorrectNum(row, col, num) {
     return true;
 };
 
-
 function isEmpty(row, col) {
     return grid[row][col] == 0 ? true : false
 }
