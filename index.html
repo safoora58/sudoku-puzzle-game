@@ -37,9 +37,9 @@
 
     <div class="container ">
       <div class="sudoku-board">
-        <div class="grid-cell"></div>
-        <div class="grid-cell"></div>
-        <div class="grid-cell"></div>
+        <div class="grid-cell "></div>
+        <div class="grid-cell "></div>
+        <div class="grid-cell "></div>
         <div class="grid-cell"></div>
         <div class="grid-cell"></div>
         <div class="grid-cell"></div>
@@ -122,12 +122,28 @@
       <div class="footer">
         <div class="btn-box">
           <div class="delete-btn">
-            <div class="number delete" id="btn-delete">X</div>
+            <button type="button" class="button" id="btn-delete">
+              <div class="button-top">Delete</div>
+              <div class="button-bottom"></div>
+              <div class="button-base"></div>
+            </button>
           </div>
           <div class="action">
-            <div class="solve" id="btn-solve">solve</div>
-            <div class="new-board" id="new-board">new game</div>
-            <div class="reset" id="reset">reset</div>
+            <button type="button" class="button-d solve" id="btn-solve">
+              <div class="buttond-top">Solve</div>
+              <div class="buttond-bottom"></div>
+              <div class="buttond-base"></div>
+            </button>
+            <button type="button" class="button-d new-board" id="new-board">
+              <div class="buttond-top">new game</div>
+              <div class="buttond-bottom"></div>
+              <div class="buttond-base"></div>
+            </button>
+            <button type="button" class="button-d reset" id="reset">
+              <div class="buttond-top">reset</div>
+              <div class="buttond-bottom"></div>
+              <div class="buttond-base"></div>
+            </button>
           </div>
         </div>
         <div class="numbers" id="numbersContainer">

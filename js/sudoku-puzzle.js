@@ -25,6 +25,8 @@ let grid = [
     [6, 7, 0, 8, 3, 0, 0, 0, 0],
     [8, 1, 0, 0, 4, 5, 0, 0, 0]
 ];
+let temp = []
+let newGrid = []
 let size = 9;
 
 function displaySudoku(grid) {
@@ -44,7 +46,6 @@ function displaySudoku(grid) {
     }
 }
 displaySudoku(grid);
-
 
 function isCorrectNum(row, col, num) {
     for (let i = 0; i < size; i++) {
@@ -85,8 +86,6 @@ function solve() {
 
                         if (solve()) {
                             grid[row][col].textContent = grid[row][col];
-                            displaySudoku(grid);
-
                             return true
                         }
                         else {
@@ -165,38 +164,49 @@ function newGame() {
 }
 
 function generateNewGame() {
-    let newGrid = [];
+    newGrid = []
+    grid = [];
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-    // Clear the grid
     for (let i = 0; i < size; i++) {
-        newGrid[i] = [];
+        grid[i] = [];
         for (let j = 0; j < size; j++) {
-            newGrid[i][j] = 0;
+            grid[i][j] = 0;
         }
     }
-    // Fill the grid with random numbers
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 25; i++) {
         let randomRow = Math.floor(Math.random() * size);
         let randomCol = Math.floor(Math.random() * size);
         let randomNum = numbers[Math.floor(Math.random() * numbers.length)];
-
-        // Check if the number is already in the row or column
-        while (!isCorrectNum(randomRow, randomCol, randomNum)) {
-            randomRow = Math.floor(Math.random() * size);
-            randomCol = Math.floor(Math.random() * size);
-            randomNum = numbers[Math.floor(Math.random() * numbers.length)];
+        if (isEmpty(randomRow, randomCol)) {
+            if (isCorrectNum(randomRow, randomCol, randomNum)) {
+                grid[randomRow][randomCol] = randomNum;
+            }
+            else {
+                for (let num = 1; num <= 9; num++) {
+                    randomNum = num
+                    if (isCorrectNum(randomRow, randomCol, randomNum)) {
+                        grid[randomRow][randomCol] = randomNum;
+                        break;
+                    }
+                }
+            }
         }
-        newGrid[randomRow][randomCol] = randomNum;
+        else i--
     }
-    grid = newGrid;
-    displaySudoku(grid);
-    console.log(newGrid);
+    grid.forEach(num => {
+        temp = []
+        num.forEach(num2 => {
+            temp.push(num2)
+        })
+        newGrid.push(temp)
+    })
+    if (solve()) {
+
+        displaySudoku(newGrid)
+    }
+    else generateNewGame();
 }
-
-
-
-
 
 function resetGame() {
     for (let i = 0; i < size; i++) {
@@ -207,9 +217,14 @@ function resetGame() {
     displaySudoku(grid);
 }
 
-newBoard.addEventListener('click', generateNewGame);
+newBoard.addEventListener('click', function () {
+    generateNewGame()
+});
 play.addEventListener('click', newGame);
-btnSolve.addEventListener('click', solve);
+btnSolve.addEventListener('click', function () {
+    solve()
+    displaySudoku(grid)
+});
 btnReset.addEventListener('click', resetGame);
 
 
