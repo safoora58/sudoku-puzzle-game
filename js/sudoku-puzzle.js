@@ -27,7 +27,10 @@ let grid = [
 ];
 let temp = []
 let newGrid = []
+let grid2 = []
 let size = 9;
+let changeNum2;
+localStorage.clear()
 
 function displaySudoku(grid) {
     board.innerHTML = '';
@@ -47,25 +50,15 @@ function displaySudoku(grid) {
 }
 displaySudoku(grid);
 
-function isCorrectNum(row, col, num) {
+function isCorrectNum(row, col, num, gridArray) {
     for (let i = 0; i < size; i++) {
-        if (grid[i][col] == num) {
+        if (gridArray[i][col] == num) {
             return false;
         }
     }
     for (let j = 0; j < size; j++) {
-        if (grid[row][j] == num) {
+        if (gridArray[row][j] == num) {
             return false;
-        }
-    }
-
-    let startRow = Math.floor(row / 3) * 3;
-    let startCol = Math.floor(col / 3) * 3;
-    for (let i = startRow; i < startRow + 3; i++) {
-        for (let j = startCol; j < startCol + 3; j++) {
-            if (grid[i][j] == num) {
-                return false;
-            }
         }
     }
     return true;
@@ -81,9 +74,8 @@ function solve() {
             let isEmpty2 = isEmpty(row, col);
             if (isEmpty2) {
                 for (let num = 1; num <= size; num++) {
-                    if (isCorrectNum(row, col, num)) {
+                    if (isCorrectNum(row, col, num, grid)) {
                         grid[row][col] = num;
-
                         if (solve()) {
                             grid[row][col].textContent = grid[row][col];
                             return true
@@ -100,51 +92,60 @@ function solve() {
     return true
 }
 
-const insertNumber = () => {
-    numbersContainer.addEventListener('click', e => {
+btnDelete.addEventListener('click', function () {
+ localStorage.setItem('changeNum', 0)
+})
+
+numbersContainer.addEventListener('click', function (e) {
+    let changeNum = Number(e.target.innerHTML)
+    screen.style.display = 'none';
+    localStorage.setItem('changeNum', changeNum)
+})
+
+board.addEventListener('click', e => {
+    let changeNum2 = Number(localStorage.getItem('changeNum'))
+    let targetIndexLocal = Number(localStorage.getItem('targetIndex'))
+    const targetIndex = Array.from(board.children).indexOf(e.target);
+    if (targetIndexLocal == targetIndex && Number(e.target.innerHTML) == changeNum2) return
+    const row = Number(Math.floor(targetIndex / size));
+    const col = Number(Math.floor(targetIndex % size));
+    localStorage.setItem('targetIndex', targetIndex)
+    if (changeNum2 == 0){
         screen.style.display = 'none';
-        changeNum = e.target.textContent;
-        e.target.style.backgroundColor = 'green';
+        e.target.textContent = '';
+        e.target.classList.remove('filled');
+        e.target.style.backgroundColor = 'rgb(161, 212, 168)';
+
+        newGrid[row][col] = changeNum2
+        return
+    }
+    e.target.textContent = changeNum2;
+
+    if (!isCorrectNum(row, col, changeNum2, newGrid)) {
+        newGrid[row][col] = changeNum2
+        e.target.style.backgroundColor = 'red';
+
+    } else {
+        newGrid[row][col] = changeNum2
+        e.target.style.backgroundColor = 'rgb(7, 115, 187)';
+        e.target.classList.add('filled');
+        e.target.classList.add('zoom-in');
         setTimeout(() => {
-            e.target.style.backgroundColor = '#f19249';
-        }, 1300);
+            e.target.classList.remove('zoom-in');
+        }, 500);
+    }
+});
 
-        console.log(changeNum);
-
-        board.addEventListener('click', e => {
-            const targetIndex = Array.from(board.children).indexOf(e.target);
-            const row = Math.floor(targetIndex / size);
-            const col = targetIndex % size;
-            e.target.textContent = changeNum;
-
-            if (!isCorrectNum(row, col, changeNum)) {
-                e.target.style.backgroundColor = 'red';
-                // alert('Oops! Repeated number');          
-                return;
-            } else {
-                e.target.classList.add('filled');
-                e.target.classList.add('zoom-in');
-                setTimeout(() => {
-                    e.target.classList.remove('zoom-in');
-                }, 500);
-            }
-        });
-    });
+function deleteNum() {
+    screen.style.display = 'none';
+    e.target.textContent = '';
+    e.target.classList.remove('filled');
+    e.target.style.backgroundColor = 'rgb(161, 212, 168)';
+    const targetIndex = Array.from(board.children).indexOf(e.target);
+    const row = Number(Math.floor(targetIndex / size));
+    const col = Number(Math.floor(targetIndex % size));
+    newGrid[row][col] = Number(0)
 }
-insertNumber();
-
-const deleteNum = () => {
-    btnDelete.addEventListener('click', () => {
-        screen.style.display = 'none';
-
-        board.addEventListener('click', e => {
-            e.target.textContent = '';
-            e.target.classList.remove('filled');
-            e.target.style.backgroundColor = 'rgb(161, 212, 168)';
-        });
-    });
-}
-deleteNum();
 
 const startGame = () => {
     startScreen.classList.remove('active');
@@ -163,6 +164,15 @@ function newGame() {
     }
 }
 
+function styleSudokuGrid() {
+    const gridCells = document.querySelectorAll('.grid-cell');
+    gridCells.forEach((cell, index) => {
+        const row = Math.floor(index / 9);
+        const col = index % 9;
+    });
+}
+styleSudokuGrid();
+
 function generateNewGame() {
     newGrid = []
     grid = [];
@@ -179,13 +189,13 @@ function generateNewGame() {
         let randomCol = Math.floor(Math.random() * size);
         let randomNum = numbers[Math.floor(Math.random() * numbers.length)];
         if (isEmpty(randomRow, randomCol)) {
-            if (isCorrectNum(randomRow, randomCol, randomNum)) {
+            if (isCorrectNum(randomRow, randomCol, randomNum, grid)) {
                 grid[randomRow][randomCol] = randomNum;
             }
             else {
                 for (let num = 1; num <= 9; num++) {
                     randomNum = num
-                    if (isCorrectNum(randomRow, randomCol, randomNum)) {
+                    if (isCorrectNum(randomRow, randomCol, randomNum, grid)) {
                         grid[randomRow][randomCol] = randomNum;
                         break;
                     }
@@ -217,18 +227,10 @@ function resetGame() {
     displaySudoku(grid);
 }
 
-newBoard.addEventListener('click', function () {
-    generateNewGame()
-});
-play.addEventListener('click', newGame);
 btnSolve.addEventListener('click', function () {
     solve()
     displaySudoku(grid)
 });
+newBoard.addEventListener('click', generateNewGame);
+play.addEventListener('click', newGame);
 btnReset.addEventListener('click', resetGame);
-
-
-// function changeMode() {
-//     document.body.classList.add('dark');
-// }
-//mode.addEventListener('click', changeMode);
