@@ -61,6 +61,13 @@ function isCorrectNum(row, col, num, gridArray) {
             return false;
         }
     }
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (gridArray[row - row % 3 + i][col - col % 3 + j] == num) {
+                return false;
+            }
+        }
+    }
     return true;
 };
 
@@ -92,14 +99,14 @@ function solve() {
     return true
 }
 
-btnDelete.addEventListener('click', function () {
- localStorage.setItem('changeNum', 0)
-})
 
 numbersContainer.addEventListener('click', function (e) {
     let changeNum = Number(e.target.innerHTML)
     screen.style.display = 'none';
-    localStorage.setItem('changeNum', changeNum)
+    localStorage.setItem('changeNum', changeNum);
+
+
+
 })
 
 board.addEventListener('click', e => {
@@ -110,11 +117,11 @@ board.addEventListener('click', e => {
     const row = Number(Math.floor(targetIndex / size));
     const col = Number(Math.floor(targetIndex % size));
     localStorage.setItem('targetIndex', targetIndex)
-    if (changeNum2 == 0){
+    if (changeNum2 == 0) {
         screen.style.display = 'none';
         e.target.textContent = '';
         e.target.classList.remove('filled');
-        e.target.style.backgroundColor = 'rgb(161, 212, 168)';
+        e.target.style.backgroundColor = 'rgba(157, 105, 206, 0.254)';
 
         newGrid[row][col] = changeNum2
         return
@@ -123,12 +130,11 @@ board.addEventListener('click', e => {
 
     if (!isCorrectNum(row, col, changeNum2, newGrid)) {
         newGrid[row][col] = changeNum2
-        e.target.style.backgroundColor = 'red';
+        e.target.style.backgroundColor = 'coral';
 
     } else {
         newGrid[row][col] = changeNum2
-        e.target.style.backgroundColor = 'rgb(7, 115, 187)';
-        e.target.classList.add('filled');
+        e.target.style.backgroundColor = 'rgb(136, 187, 187)';
         e.target.classList.add('zoom-in');
         setTimeout(() => {
             e.target.classList.remove('zoom-in');
@@ -136,17 +142,22 @@ board.addEventListener('click', e => {
     }
 });
 
-function deleteNum() {
-    screen.style.display = 'none';
-    e.target.textContent = '';
-    e.target.classList.remove('filled');
-    e.target.style.backgroundColor = 'rgb(161, 212, 168)';
-    const targetIndex = Array.from(board.children).indexOf(e.target);
-    const row = Number(Math.floor(targetIndex / size));
-    const col = Number(Math.floor(targetIndex % size));
-    newGrid[row][col] = Number(0)
-}
+//function deleteNum() {
+//screen.style.display = 'none';
+// e.target.textContent = '';
+// e.target.classList.remove('filled');
+// e.target.style.backgroundColor = 'red';
+// const targetIndex = Array.from(board.children).indexOf(e.target);
+// const row = Number(Math.floor(targetIndex / size));
+// const col = Number(Math.floor(targetIndex % size));
+// newGrid[row][col] = Number(0)
+//}
 
+btnDelete.addEventListener('click', function () {
+    localStorage.setItem('changeNum', 0);
+    screen.style.display = 'none';
+
+})
 const startGame = () => {
     startScreen.classList.remove('active');
     container.classList.add('active');
@@ -221,11 +232,23 @@ function generateNewGame() {
 function resetGame() {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
-            grid[i][j] = 0;
+            if (!document.querySelector(`.grid-cell:nth-child(${i * size + j + 1})`).classList.contains('filled')) {
+                grid[i][j] = 0;
+                newGrid[i][j] = 0;
+                document.querySelector(`.grid-cell:nth-child(${i * size + j + 1})`).textContent = '';
+            }
         }
     }
     displaySudoku(grid);
 }
+// function resetGame() {
+//     for (let i = 0; i < size; i++) {
+//         for (let j = 0; j < size; j++) {
+//             grid[i][j] = 0;
+//         }
+//     }
+//     displaySudoku(grid);
+// }
 
 btnSolve.addEventListener('click', function () {
     solve()
@@ -234,3 +257,4 @@ btnSolve.addEventListener('click', function () {
 newBoard.addEventListener('click', generateNewGame);
 play.addEventListener('click', newGame);
 btnReset.addEventListener('click', resetGame);
+
