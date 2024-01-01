@@ -26,7 +26,17 @@ let grid = [
     [8, 1, 0, 0, 4, 5, 0, 0, 0]
 ];
 let temp = []
-let newGrid = []
+let newGrid = [
+    [0, 0, 7, 4, 9, 1, 6, 0, 5],
+    [2, 0, 0, 0, 6, 0, 3, 0, 9],
+    [0, 0, 0, 0, 0, 7, 0, 1, 0],
+    [0, 5, 8, 6, 0, 0, 0, 0, 4],
+    [0, 0, 3, 0, 0, 0, 0, 9, 0],
+    [0, 0, 6, 2, 0, 0, 1, 8, 7],
+    [9, 0, 4, 0, 7, 0, 0, 0, 2],
+    [6, 7, 0, 8, 3, 0, 0, 0, 0],
+    [8, 1, 0, 0, 4, 5, 0, 0, 0]
+];
 let grid2 = []
 let size = 9;
 let changeNum2;
@@ -103,6 +113,10 @@ function solve() {
 numbersContainer.addEventListener('click', function (e) {
     let changeNum = Number(e.target.innerHTML)
     screen.style.display = 'none';
+    e.target.classList.add('color');
+    setTimeout(() => {
+        e.target.classList.remove('color');
+    }, 2000);
     localStorage.setItem('changeNum', changeNum);
 
 
@@ -131,6 +145,12 @@ board.addEventListener('click', e => {
     if (!isCorrectNum(row, col, changeNum2, newGrid)) {
         newGrid[row][col] = changeNum2
         e.target.style.backgroundColor = 'coral';
+        e.target.classList.add('error-cell');
+        setTimeout(() => {
+            e.target.classList.remove('error-cell');
+        }, 500);
+
+
 
     } else {
         newGrid[row][col] = changeNum2

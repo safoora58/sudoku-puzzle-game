@@ -11,7 +11,7 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
   /* background-image: linear-gradient( 109.6deg,  rgba(15,2,2,1) 11.2%, rgba(36,163,190,1) 91.1% ); */
-  background-image: linear-gradient( 109.6deg,  rgba(5,84,94,1) 16%, #bbb 91.1% ); 
+  background-image: linear-gradient(109.6deg, rgba(5, 84, 94, 1) 16%, #bbb 91.1%);
 }
 
 .navbar {
@@ -34,7 +34,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   height: 40vh;
-  width: 30%;
+  width: 50%;
   display: grid;
   place-items: center;
   min-width: 200px;
@@ -48,7 +48,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateX(-440%);
+  transform: translateX(-540%);
   transition: transform 0.4s ease-in-out;
 }
 
@@ -56,7 +56,7 @@ body {
   transform: translateX(0);
 }
 
-.box-start{
+.box-start {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,8 +73,8 @@ body {
   z-index: -1;
 }
 
-.box-start::before{
-  content:'';
+.box-start::before {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -86,8 +86,9 @@ body {
   border-radius: 55px;
   z-index: -1;
 }
-.box-start::after{
-  content:'';
+
+.box-start::after {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -100,19 +101,19 @@ body {
   z-index: -1;
 }
 
-.box-start:hover{
+.box-start:hover {
   border-radius: 30px;
 }
 
 .box-start:hover::after {
   border-radius: 30px;
-  background-image: linear-gradient( 109.6deg,  rgba(254,253,205,1) 11.2%, rgba(163,230,255,1) 91.1% );
+  background-image: linear-gradient(109.6deg, rgba(254, 253, 205, 1) 11.2%, rgba(163, 230, 255, 1) 91.1%);
   transform: translate(-50%, -50%) rotate(30deg);
 }
 
-.box-start:hover::before{
+.box-start:hover::before {
   border-radius: 30px;
-  background-image: linear-gradient( 109.6deg,  rgba(254,253,205,1) 11.2%, rgba(163,230,255,1) 91.1% );
+  background-image: linear-gradient(109.6deg, rgba(254, 253, 205, 1) 11.2%, rgba(163, 230, 255, 1) 91.1%);
   transform: translate(-50%, -50%) rotate(-30deg);
 }
 
@@ -147,8 +148,8 @@ body {
   font-size: 18px;
 }
 
- .custom-btn {
-   width: 185px;
+.custom-btn {
+  width: 185px;
   height: 65px;
   color: #fff;
   border-radius: 25px;
@@ -160,9 +161,9 @@ body {
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
   outline: none;
   font-size: 18px;
 }
@@ -188,18 +189,20 @@ body {
   display: grid;
   place-items: center;
 }
-.btn-4:hover span{
-color: black;
+
+.btn-4:hover span {
+  color: black;
 }
+
 .btn-4:before,
 .btn-4:after {
   position: absolute;
   content: "";
   right: 0;
   top: 0;
-  box-shadow: 4px 4px 6px 0 rgba(255,255,255,.9),
-              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-    inset -4px -4px 6px 0 rgba(255,255,255,.9),
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .9),
+    -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, .9),
     inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
   transition: all 0.3s ease;
 }
@@ -228,9 +231,9 @@ color: black;
   content: "";
   left: 0;
   bottom: 0;
-  box-shadow: 4px 4px 6px 0 rgba(255,255,255,.9),
-              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-    inset -4px -4px 6px 0 rgba(255,255,255,.9),
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .9),
+    -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, .9),
     inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
   transition: all 0.3s ease;
 }
@@ -251,7 +254,7 @@ color: black;
 
 .btn-4 span:hover:after {
   width: 100%;
-} 
+}
 
 .error-inputname {
   border-color: rgb(26, 255, 0);
@@ -291,8 +294,8 @@ color: black;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 00, 0, 0.1), 10px 10px 5px rgba(34, 34, 34, 0.2), 20px 10px 10px rgba(34, 34, 34, 0.2), 5px 5px 5px rgba(54, 54, 54, 0.1),
     inset 3px 1px 3px #422601, inset -3px 1px 3px #15100a;
-    min-width: 200px;
-    overflow: hidden;
+  min-width: 200px;
+  overflow: hidden;
 }
 
 .container {
@@ -309,7 +312,6 @@ color: black;
   transform: translateX(300%);
   transition: transform 0.8s ease-in-out;
   background-color: white;
- 
 }
 
 .container.index {
@@ -346,7 +348,6 @@ color: black;
   margin: 0;
   overflow: visible;
   padding: 13px 19px;
-  text-align: center;
   touch-action: manipulation;
   transform: translateZ(0);
   transition: filter .2s;
@@ -563,8 +564,14 @@ color: black;
   }
 
   100% {
-    transform: scale(2) rotate(30deg);
+    transform: scale(2) rotate(60deg);
   }
+}
+
+.color {
+  background-color: #d41753;
+  font-weight: bold;
+  transform: scale(1.1);
 }
 
 .button {
@@ -741,182 +748,414 @@ color: black;
   box-shadow: 0 1px 1px 0 rgba(255, 255, 255, .75), inset 0 2px 2px rgba(0, 0, 0, .25);
 }
 
-
-@media (max-width: 465px) {
+@media (max-width: 425px) {
   .main-container {
-    width: 95%;
-    height: 50%;
+    width: 415px;
+    height: 415px;
   }
 
   .header {
-    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 21px;
     font-weight: bold;
   }
 
-  .numbers {
-    gap: 1px;
-    margin-top: 8px;
+  .sudoku-board {
+    margin-top: 5px;
+    gap: 2px;
   }
 
-  .number {
-    padding: 0px 12px;
-    font-size: 11px;
+  .footer {
+    width: 85%;
+    justify-content: space-between;
+    margin-top: 3px;
+  }
+
+  .action {
+    width: 50%;
   }
 
   .button {
-    min-width: 5em;
+    min-width: 3em;
   }
 
   .button-top {
-    min-width: 5em;
-    font-size: 12px;
+    font-size: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .button-bottom {
+    bottom: 6px;
+    height: calc(100% - 12px);
+  }
+
+  .button-base {
+    top: 2px;
+    left: 1px;
+    width: 95%;
+    height: calc(100% - 6px);
+  }
+
+  .buttond-bottom {
+    bottom: 6px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 12px);
+  }
+
+  .buttond-base {
+    top: 2px;
+    left: 1px;
+    width: 95%;
+    height: calc(100% - 6px);
   }
 
   .button-d {
-    min-width: 5em;
+    min-width: 3em;
   }
 
   .buttond-top {
-    min-width: 5em;
-    font-size: 12px;
-  }
-
-  .buttonn {
-    min-width: 5em;
+    font-size: 9px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .buttonn-top {
-    font-size: 12px;
-    padding-left: 4px;
-    padding-right: 4px;
+    font-size: 9px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .grid-cell {
+    width: 6.4%;
+    height: 6.4%;
+    padding: 10px 16px;
+    font-size: 9px;
+    border-radius: 7px;
+  }
+
+  .grid-cell::after {
+    border-radius: 7px;
+    bottom: -2px;
+  }
+
+  .numbers {
+    width: 35%;
+    gap: 2px;
+    padding-top: 0px;
+    margin-right: 16px;
+  }
+
+  .number {
+    padding: 3px 13px;
+    font-size: 9px;
+  }
+
+  .screen {
+    width: 80%;
+  }
+
+  .box-start {
+    width: 200px;
+    height: 200px;
+  }
+
+  .name {
+    width: 123px;
+    height: 40px;
+    font-size: 11px;
+  }
+
+  .name::placeholder {
+    font-size: 11px;
+  }
+
+  .btn-4 {
+    width: 130px;
+    height: 50px;
     font-size: 13px;
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 375px) {
   .main-container {
-    width: 95%;
-    height: 60%;
+    width: 360px;
+    height: 360px;
   }
 
   .header {
-    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 19px;
     font-weight: bold;
   }
 
+  .sudoku-board {
+    margin-top: 2px;
+    margin-bottom: 5px;
+  }
+
+  .footer {
+    width: 75%;
+    justify-content: space-between;
+    margin-top: 2px;
+  }
+
+  .action {
+    width: 50%;
+  }
+
   .button {
-    min-width: 4em;
+    min-width: 2em;
   }
 
   .button-top {
-    min-width: 4em;
-    font-size: 12px;
+    font-size: 8px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .button-bottom {
+    bottom: 6px;
+    height: calc(100% - 12px);
+  }
+
+  .button-base {
+    top: 2px;
+    left: 1px;
+    width: 95%;
+    height: calc(100% - 6px);
+  }
+
+  .buttond-bottom {
+    bottom: 6px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 12px);
+  }
+
+  .buttond-base {
+    top: 2px;
+    left: 1px;
+    width: 95%;
+    height: calc(100% - 6px);
   }
 
   .button-d {
-    min-width: 4em;
+    min-width: 2em;
   }
 
   .buttond-top {
-    min-width: 4em;
-    font-size: 12px;
-  }
-
-  .buttonn {
-    min-width: 5em;
+    font-size: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
 
   .buttonn-top {
-    font-size: 10px;
+    font-size: 8px;
     padding-left: 2px;
     padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
 
   .grid-cell {
-    font-size: 12px;
+    width: 5.4%;
+    height: 5.4%;
+    padding: 8px 14px;
+    font-size: 8px;
+    border-radius: 7px;
+  }
+
+  .grid-cell::after {
+    border-radius: 7px;
+    bottom: -2px;
+  }
+
+  .numbers {
+    width: 30%;
+    gap: 1px;
+    padding-top: 3px;
+    margin-right: 14px;
+  }
+
+  .number {
+    padding: 2px 12px;
+    font-size: 8px;
+  }
+
+  .screen {
+    width: 80%;
+  }
+
+  .box-start {
+    width: 180px;
+    height: 180px;
   }
 
   .name {
-    width: 143px;
+    width: 103px;
+    height: 30px;
+    font-size: 10px;
   }
 
-  .game {
-    width: 150px;
+  .name::placeholder {
+    font-size: 10px;
+  }
+
+  .btn-4 {
+    width: 110px;
+    height: 40px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 320px) {
   .main-container {
-    width: 95%;
-    height: 60%;
+    width: 310px;
+    height: 310px;
   }
 
   .header {
-    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 19px;
     font-weight: bold;
   }
 
+  .sudoku-board {
+    margin-top: 2px;
+    margin-bottom: 5px;
+  }
+
+  .footer {
+    width: 75%;
+    justify-content: space-between;
+    margin-top: 2px;
+  }
+
+  .action {
+    width: 50%;
+    margin-top: 7px;
+  }
+
   .button {
-    min-width: 3em;
+    min-width: 1em;
   }
 
   .button-top {
-    min-width: 3em;
-    font-size: 11px;
+    font-size: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .button-bottom {
+    bottom: 6px;
+    height: calc(100% - 12px);
+  }
+
+  .button-base {
+    top: 2px;
+    left: 1px;
+    width: 95%;
+    height: calc(100% - 6px);
   }
 
   .button-d {
-    min-width: 4em;
+    min-width: 1em;
   }
 
   .buttond-top {
-    min-width: 3em;
-    font-size: 10px;
+    font-size: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
   }
 
-  .buttonn {
-    min-width: 4em;
+  .buttond-bottom {
+    bottom: 6px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 12px);
+  }
+
+  .buttond-base {
+    top: 2px;
+    left: 1px;
+    width: 95%;
+    height: calc(100% - 6px);
   }
 
   .buttonn-top {
-    font-size: 9px;
-    padding-left: 0px;
-    padding-right: 0px;
+    font-size: 7px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
   }
 
   .grid-cell {
-    font-size: 11px;
+    width: 4.4%;
+    height: 4.4%;
+    padding: 8px 12px;
+    font-size: 7px;
+    border-radius: 7px;
+  }
+
+  .grid-cell::after {
+    border-radius: 7px;
+    bottom: -2px;
   }
 
   .numbers {
+    width: 20%;
     gap: 1px;
-    margin-top: 8px;
+    padding-top: 3px;
+    margin-right: 26px;
   }
 
   .number {
-    padding: 0px 10px;
+    padding: 2px 11px;
+    font-size: 7px;
+  }
+
+  .screen {
+    width: 80%;
+  }
+
+  .box-start {
+    width: 160px;
+    height: 160px;
+  }
+
+  .name {
+    width: 83px;
+    height: 20px;
     font-size: 9px;
   }
 
-  .button {
-    min-width: 3em;
+  .name::placeholder {
+    font-size: 9px;
   }
 
-  .button-top {
-    min-width: 3em;
-    font-size: 10px;
+  .btn-4 {
+    width: 90px;
+    height: 40px;
+    font-size: 11px;
   }
-
 }
-
-
-
-
-
-/* #button:active {
-  box-shadow: 4px 4px 12px #c5c5c5,
-             -4px -4px 12px #ffffff;
-} */
