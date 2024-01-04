@@ -118,9 +118,6 @@ numbersContainer.addEventListener('click', function (e) {
         e.target.classList.remove('color');
     }, 2000);
     localStorage.setItem('changeNum', changeNum);
-
-
-
 })
 
 board.addEventListener('click', e => {
@@ -149,9 +146,6 @@ board.addEventListener('click', e => {
         setTimeout(() => {
             e.target.classList.remove('error-cell');
         }, 500);
-
-
-
     } else {
         newGrid[row][col] = changeNum2
         e.target.style.backgroundColor = 'rgb(136, 187, 187)';
@@ -162,22 +156,11 @@ board.addEventListener('click', e => {
     }
 });
 
-//function deleteNum() {
-//screen.style.display = 'none';
-// e.target.textContent = '';
-// e.target.classList.remove('filled');
-// e.target.style.backgroundColor = 'red';
-// const targetIndex = Array.from(board.children).indexOf(e.target);
-// const row = Number(Math.floor(targetIndex / size));
-// const col = Number(Math.floor(targetIndex % size));
-// newGrid[row][col] = Number(0)
-//}
-
 btnDelete.addEventListener('click', function () {
     localStorage.setItem('changeNum', 0);
     screen.style.display = 'none';
-
 })
+
 const startGame = () => {
     startScreen.classList.remove('active');
     container.classList.add('active');
@@ -194,15 +177,6 @@ function newGame() {
         }, 500);
     }
 }
-
-function styleSudokuGrid() {
-    const gridCells = document.querySelectorAll('.grid-cell');
-    gridCells.forEach((cell, index) => {
-        const row = Math.floor(index / 9);
-        const col = index % 9;
-    });
-}
-styleSudokuGrid();
 
 function generateNewGame() {
     newGrid = []
@@ -243,7 +217,6 @@ function generateNewGame() {
         newGrid.push(temp)
     })
     if (solve()) {
-
         displaySudoku(newGrid)
     }
     else generateNewGame();
@@ -261,14 +234,6 @@ function resetGame() {
     }
     displaySudoku(grid);
 }
-// function resetGame() {
-//     for (let i = 0; i < size; i++) {
-//         for (let j = 0; j < size; j++) {
-//             grid[i][j] = 0;
-//         }
-//     }
-//     displaySudoku(grid);
-// }
 
 btnSolve.addEventListener('click', function () {
     solve()

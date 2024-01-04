@@ -10,7 +10,6 @@ body {
   width: 100%;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
-  /* background-image: linear-gradient( 109.6deg,  rgba(15,2,2,1) 11.2%, rgba(36,163,190,1) 91.1% ); */
   background-image: linear-gradient(109.6deg, rgba(5, 84, 94, 1) 16%, #bbb 91.1%);
 }
 
@@ -116,7 +115,6 @@ body {
   background-image: linear-gradient(109.6deg, rgba(254, 253, 205, 1) 11.2%, rgba(163, 230, 255, 1) 91.1%);
   transform: translate(-50%, -50%) rotate(-30deg);
 }
-
 .name {
   margin-top: 1rem;
   border-radius: 20px;

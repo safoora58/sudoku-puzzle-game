@@ -12,144 +12,142 @@
 </head>
 
 <body>
-
-    <div class="screen">
-      <div class="start-screen active" id="start-screen">
-        <div class="box-start">
-          <input type="text" placeholder="enter your name" maxlength="11" class="name" id="input-name">
-          <button class="custom-btn btn-4" id="play"><span>Start Game</span></button>
+  <div class="screen">
+    <div class="start-screen active" id="start-screen">
+      <div class="box-start">
+        <input type="text" placeholder="enter your name" maxlength="11" class="name" id="input-name">
+        <button class="custom-btn btn-4" id="play"><span>Start Game</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="main-container" id="game-screen">
+    <div class="navbar">
+      <div class="header">
+        <div>Sudoku Puzzle </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sudoku-board">
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+      </div>
+      <div class="footer">
+        <div class="action">
+          <button type="button" class="button-d new-board" id="new-board">
+            <div class="buttond-top buttonn-top">new game</div>
+            <div class="buttond-bottom"></div>
+            <div class="buttond-base"></div>
+          </button>
+          <button type="button" class="button-d solve" id="btn-solve">
+            <div class="buttond-top">Solve</div>
+            <div class="buttond-bottom"></div>
+            <div class="buttond-base"></div>
+          </button>
+          <button type="button" class="button" id="btn-delete">
+            <div class="button-top">Delete</div>
+            <div class="button-bottom"></div>
+            <div class="button-base"></div>
+          </button>
+          <button type="button" class="button-d reset" id="reset">
+            <div class="buttond-top">reset</div>
+            <div class="buttond-bottom"></div>
+            <div class="buttond-base"></div>
+          </button>
+        </div>
+        <div class="numbers" id="numbersContainer">
+          <button class="number">1</button>
+          <button class="number">2</button>
+          <button class="number">3</button>
+          <button class="number">4</button>
+          <button class="number">5</button>
+          <button class="number">6</button>
+          <button class="number">7</button>
+          <button class="number">8</button>
+          <button class="number">9</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="main-container" id="game-screen">
-      <div class="navbar">
-        <div class="header">
-          <div>Sudoku Puzzle </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="sudoku-board">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-        </div>
-        <div class="footer">
-          <div class="action">
-            <button type="button" class="button-d new-board" id="new-board">
-              <div class="buttond-top buttonn-top">new game</div>
-              <div class="buttond-bottom"></div>
-              <div class="buttond-base"></div>
-            </button>
-            <button type="button" class="button-d solve" id="btn-solve">
-              <div class="buttond-top">Solve</div>
-              <div class="buttond-bottom"></div>
-              <div class="buttond-base"></div>
-            </button>
-            <button type="button" class="button" id="btn-delete">
-              <div class="button-top">Delete</div>
-              <div class="button-bottom"></div>
-              <div class="button-base"></div>
-            </button>
-            <button type="button" class="button-d reset" id="reset">
-              <div class="buttond-top">reset</div>
-              <div class="buttond-bottom"></div>
-              <div class="buttond-base"></div>
-            </button>
-          </div>
-          <div class="numbers" id="numbersContainer">
-            <button class="number">1</button>
-            <button class="number">2</button>
-            <button class="number">3</button>
-            <button class="number">4</button>
-            <button class="number">5</button>
-            <button class="number">6</button>
-            <button class="number">7</button>
-            <button class="number">8</button>
-            <button class="number">9</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
   <script src="js/sudoku-puzzle.js"></script>
 </body>
 
